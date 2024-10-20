@@ -2,6 +2,7 @@
 #Persistent
 SetBatchLines, -1
 
+powerImage := A_ScriptDir "\assets\power.jpg"
 lockImage := A_ScriptDir "\assets\lock.jpg"
 menuImage := A_ScriptDir "\assets\menu.jpg"
 backImage := A_ScriptDir "\assets\back.jpg"
@@ -25,17 +26,28 @@ if FileExist(A_ScriptDir "\assets\Gubna Tech.ico")
 	SendMessage, 0x80, 1, hIcon
 }
 
-Gui 2: Add, Picture,x0 y0 w50 h50 gsleepClicked, %sleepImage%
-Gui 2: Add, Picture,x50 y0 w50 h50 glockClicked, %lockImage%
-Gui 2: Add, Picture,x100 y0 w50 h50 ginfoClicked, %infoImage%
-Gui 2: Add, Picture,x150 y0 w50 h50 gbackClicked, %backImage%
-Gui 2: Add, Picture,x200 y0 w50 h50 gcloseClicked, %closeImage%
+Gui 2: Add, Picture,x0 y0 w50 h50 gpowerClicked, %powerImage%
+Gui 2: Add, Picture,x50 y0 w50 h50 gsleepClicked, %sleepImage%
+Gui 2: Add, Picture,x100 y0 w50 h50 glockClicked, %lockImage%
+Gui 2: Add, Picture,x150 y0 w50 h50 ginfoClicked, %infoImage%
+Gui 2: Add, Picture,x200 y0 w50 h50 gbackClicked, %backImage%
+Gui 2: Add, Picture,x250 y0 w50 h50 gcloseClicked, %closeImage%
 return
 
 menuClicked:
 Gui 1: hide
 Gui 2: +AlwaysOnTop +LastFound -caption
-Gui 2: Show, x0 y0 w250 h50, Options GUI
+Gui 2: Show, x0 y0 w300 h50, Options GUI
+return
+
+powerClicked:
+MsgBox, 4132, Shutdown Device?, Do you want to shutdown device? (Press YES or NO)
+IfMsgBox No
+	return
+ifMsgBox Yes
+{
+	shutdown 13
+}
 return
 
 lockClicked:
@@ -68,6 +80,9 @@ Gui 20: Font, S13 bold cMaroon
 Gui 20: Add, Text, Center w220 x5,Information
 Gui 20: Add, Text, center x5 w220,
 Gui 20: Font, cBlack s11
+Gui 20: Add, Picture, x90 w50 h50, %powerImage%
+Gui 20: Add, Text, Center w220 x5,shutdown
+Gui 20: Add, Text, center x5 w220,
 Gui 20: Add, Picture, x90 w50 h50, %menuImage%
 Gui 20: Add, Text, Center w220 x5,menu
 Gui 20: Add, Text, center x5 w220,
