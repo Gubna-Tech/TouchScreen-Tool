@@ -1,6 +1,7 @@
 # TouchScreen-Tool
 
 <p align="center">
+      <img width="250" height="250" src="https://github.com/Gubna-Tech/TouchScreen-Tool/blob/main/TouchScreen%20Tool/Assets/logo.jpg">
     <a href="https://www.autohotkey.com">
   <img width="250" height="250" src="https://github.com/Gubna-Tech/RuneScape/blob/main/Assets/Logo/LLARS/AHK%20Logo.png">
 </p>
