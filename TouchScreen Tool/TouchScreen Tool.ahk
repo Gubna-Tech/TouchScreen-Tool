@@ -2,6 +2,30 @@
 #Persistent
 SetBatchLines, -1
 
+if (InStr(A_ScriptDir, ".zip" or ".rar") > 0) {
+	Menu, Tray, NoIcon
+	Gui Error: +LastFound +OwnDialogs +AlwaysOnTop
+	Gui Error: Font, S13 bold underline cRed
+	Gui Error: Add, Text, Center w220 x5,ERROR
+	Gui Error: Add, Text, center x5 w220,
+	Gui Error: Font, s12 norm bold
+	Gui Error: Add, Text, Center w220 x5, Files Are Zipped
+	Gui Error: Add, Text, center x5 w220,
+	Gui Error: Font, cBlack
+	Gui Error: Add, Text, Center w220 x5, Please extract all files from the zipped (.zip) folder:
+	Gui Error: Font, underline s12
+	Gui Error: Add, Text, cGreen center w220 x5, TouchScreen-Tool-main.zip
+	Gui Error: Font, s11 norm Bold c0x152039
+	Gui Error: Add, Text, center x5 w220,
+	Gui Error: Add, Text, Center w220 x5,Created by Gubna
+	Gui Error: Add, Button, gDiscordError w150 x40 center,Discord
+	Gui Error: add, button, gCloseError w150 x40 center,Close Error
+	WinSet, ExStyle, ^0x80
+	Gui Error: -caption
+	Gui Error: Show, center w230, File Error
+	return
+}
+
 powerImage := A_ScriptDir "\assets\power.jpg"
 lockImage := A_ScriptDir "\assets\lock.jpg"
 menuImage := A_ScriptDir "\assets\menu.jpg"
@@ -17,7 +41,7 @@ if FileExist(A_ScriptDir "\assets\Gubna Tech.ico")
 {
 	Menu, Tray, Icon, %icon%
 }
-Gui 1: Show, x0 y0 w50 h50, Menu GUI
+Gui 1: Show, x0 y0 w50 h50, Menu
 
 if FileExist(A_ScriptDir "\assets\Gubna Tech.ico")
 {
@@ -37,11 +61,11 @@ return
 menuClicked:
 Gui 1: hide
 Gui 2: +AlwaysOnTop +LastFound -caption
-Gui 2: Show, x0 y0 w300 h50, Options GUI
+Gui 2: Show, x0 y0 w300 h50, Options
 return
 
 powerClicked:
-MsgBox, 4132, Shutdown Device?, Do you want to shutdown device? (Press YES or NO)
+MsgBox, 4132, Shutdown Device?, Do you want to shutdown device? (Press Yes or No)`n`nMake sure to save all your work before clicking Yes. This is your final opportunity to avoid losing any progress.
 IfMsgBox No
 	return
 ifMsgBox Yes
@@ -61,7 +85,6 @@ Gui 2: hide
 Gui 1: show
 winwait, Menu GUI
 Sendevent, ^{LWin down}x^{LWin up}
-;sleep 500
 winwait PopupHost
 sendevent {u}
 sleep 400
@@ -131,3 +154,10 @@ return
 closeClicked:
 guiclose:
 exitapp
+
+DiscordError:
+Run, https://discord.gg/hNj4CQ5stX
+Exitapp
+
+CloseError:
+ExitApp
