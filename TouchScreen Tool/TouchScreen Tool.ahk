@@ -83,7 +83,7 @@ return
 sleepClicked:
 Gui 2: hide
 Gui 1: show
-winwait, Menu GUI
+winwait, Menu
 Sendevent, ^{LWin down}x^{LWin up}
 winwait PopupHost
 sendevent {u}
