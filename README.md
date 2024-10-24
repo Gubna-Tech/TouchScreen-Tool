@@ -15,3 +15,5 @@
     <img src="https://raw.githubusercontent.com/Gubna-Tech/RuneScape/a0b944fa0adb2ff6251545e43360c004e3b12819/Assets/LLARS%20Discord.png" alt="Download" width="400" height="120">
   </a>
 </p>
+
+TouchScreen Tool is an AutoHotKey utility designed specifically for 2-in-1 laptops, providing essential touchscreen functionality when the keyboard is disabled or inaccessible. Developed for the Lenovo ThinkPad X1 Yoga, this tool features a convenient toolbar with options to shut down the device, put it to sleep, lock it, and access an information tab. Enhance your touchscreen experience with ease!
